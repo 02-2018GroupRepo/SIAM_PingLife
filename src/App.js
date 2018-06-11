@@ -7,16 +7,26 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+            <div className="flex-header" style={style.flexer}>
+                {/*<h4><a href="" target="none">Link 1</a></h4>*/}
+                <h3>IP Speeds</h3>
+                <h3>Graph</h3>
+                <h3>Location</h3>
+                <h3>Detail</h3>
+            </div>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
           <Pinger/>
       </div>
     );
   }
 }
+const style = {
+    flexer: {
+        paddingHorizontal: 5,
+        display: "flex",
+        justifyContent: "space-around",
+        width: "30vw"
+    }
+};
 
 export default App;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from "lodash";
+import Machine from './Machine'
 const list = [
         {'ip': '192.168.88.49', 'speed' : '1.5' },
         {'ip': '192.168.88.49', 'speed' : '1.5' },
@@ -33,29 +34,34 @@ class Pinger extends Component{
                 console.log(error);
             });
     }
-     makeCard() {
-        let things = [];
-        _.forEach(list, function(value){
-            things.push(<div>
-                <h3>{value.ip}</h3>
-                <h5>{value.speed}</h5>
-            </div>)
-        });
-         return things;
-     }
+
     render(){
         if (this.state.list !== null){
             console.log(this.state.list);
         }
         return(
-            <div>
-                {this.makeCard()}
+            <div style={style.cardsOuter}>
+               <div>
+                   <h3>Mahines at Location X</h3>
+               </div>
+                <Machine/>
             </div>
+
         )
     }
 }
 const style = {
-    pingDiv: {
+    cardsOuter: {
+        minHeight: "90vh",
+     backgroundColor: "#96939B"
+
+    },
+    outer: {
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: 'wrap',
+        marginTop: 15,
+
 
     }
 };

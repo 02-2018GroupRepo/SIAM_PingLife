@@ -13,7 +13,8 @@ class Pinger extends Component{
         var self = this;
         axios.get('http://35.199.33.29:8081/')
             .then(function (response) {
-                console.log(response.data);
+                console.log("ayy", ßresponse.data);
+
                 self.setState({
                     ip: response.data["192.168.88.49"],
                     ms: Object.keys(response.data)
@@ -29,7 +30,6 @@ class Pinger extends Component{
         return(
             <div>
                 {this.state.ip}
-                <br/>
                 <br/>
                 {this.state.ms}
             </div>

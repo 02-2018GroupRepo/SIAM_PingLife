@@ -45,10 +45,10 @@ class App extends Component {
 }
 const style = {
     flexer: {
-        paddingHorizontal: 5,
+        paddingHorizontal: 10,
         display: "flex",
         justifyContent: "space-around",
-        width: "55vh"
+        width: "70vh"
     }
 };
 

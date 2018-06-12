@@ -24,6 +24,9 @@ class Machine extends Component{
             else if (value.devicetype === "iPhone"){
                 icon = "images/iphone.png"
             }
+            else{
+                icon = "images/notFound.png"
+            }
             things.push(
                 <div key={key} style={style.dataDiv}>
 
@@ -38,7 +41,7 @@ class Machine extends Component{
                              }/>
 
                     <h4>{"IP  " + value.ipAddress}</h4>
-                    <h4>{"Device Type  " +  value.devicetype}</h4>
+                    <h4>{"Device Type  " + value.devicetype}</h4>
                     <h5>{"Ping Speed " + value.speed}</h5>
 
 

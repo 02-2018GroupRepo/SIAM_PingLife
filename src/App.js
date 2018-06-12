@@ -25,7 +25,7 @@ const style = {
         paddingHorizontal: 5,
         display: "flex",
         justifyContent: "space-around",
-        width: "30vw"
+        width: "55vh"
     }
 };
 

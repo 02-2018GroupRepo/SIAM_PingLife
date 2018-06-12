@@ -17,7 +17,13 @@
     color: white;
     font-family: "Lucida Grande";
     font-weight: 100;
-    margin: 2% 0;
+    margin: 2vw 0;
+}
+
+.deviceIcon {
+    border-radius: 10px;
+    padding: 2vh 2vh;
+    background-color:#DAD9DA;
 }
 
 

@@ -18,21 +18,22 @@ class Pinger extends Component{
         this.state = {
             ip: null,
             ms: null,
+            list: null,
         }
     }
     componentWillMount(){
-        var self = this;
-        axios.get('http://35.199.33.29:8081/')
-            .then(function (response) {
-                console.log("ayy", response.data);
-
-                // self.setState({
-                //
-                // });
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        // var self = this;
+        // axios.get('http://35.199.33.29:8081/')
+        //     .then(function (response) {
+        //         console.log("ayy", response.data);
+        //
+        //         // self.setState({
+        //         //
+        //         // });
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
     }
 
     render(){

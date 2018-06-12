@@ -5,13 +5,13 @@ const list = [
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
+    {'ip': '192.168.88.49', 'speed' : "N/A", type: "printer" },
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
+    {'ip': '192.168.88.49', 'speed' : "N/A", type: "computer"},
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
+    {'ip': '192.168.88.49', 'speed' : "N/A", type: "computer"},
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
     {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
@@ -31,9 +31,9 @@ class Machine extends Component{
             .then(function (response) {
                 console.log("ayy", response.data);
 
-                // self.setState({
-                //
-                // });
+                self.setState({
+
+                });
             })
             .catch(function (error) {
                 console.log(error);
@@ -42,7 +42,7 @@ class Machine extends Component{
     makeCard() {
         let things = [];
         let icon = null;
-        _.forEach(list, function(value){
+        _.forEach(list, function(value, key){
             if (value.type === "printer"){
                 icon = "images/printer.png"
             }
@@ -50,10 +50,21 @@ class Machine extends Component{
                 icon = "images/computer.png"
             }
             things.push(
-                <div style={style.dataDiv}>
-                    <img src={icon} alt=""/>
-                    <h4>{value.ip}</h4>
-                    <h5>{value.speed}</h5>
+                <div key={key} style={style.dataDiv}>
+
+                        <img src={icon} alt="" className="deviceIcon"
+                             style={
+                                 value.speed === "N/A" ? (
+                                     {
+                                         border:"solid 1.5px red"
+                                     }
+                                 ) : (
+                                     {border:"solid 1.5px green"})
+                             }/>
+
+                    <h4>{"IP  " + value.ip}</h4>
+                    <h5>{"Ping Speed " + value.speed}</h5>
+
                 </div>
             )
         });
@@ -65,6 +76,7 @@ class Machine extends Component{
         }
         return(
             <div>
+
                 <div style={style.outer}>
                     {this.makeCard()}
                 </div>
@@ -75,9 +87,9 @@ class Machine extends Component{
 }
 const style = {
     dataDiv: {
-        color: "white",
+        color: "black",
         border: "solid 1px black",
-        backgroundColor: "#FA6304",
+        backgroundColor: "white",
         borderRadius: "5px",
         padding: 20,
         margin: 10,
@@ -90,6 +102,9 @@ const style = {
         marginTop: 15,
 
 
+    },
+    iconStyle:{
+        border:"solid 3px green"
     }
 };
 export default Machine;

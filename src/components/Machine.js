@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from "lodash";
+import MachineDetail from './MachineDetail'
 class Machine extends Component{
     constructor(props){
         super(props);
@@ -42,8 +43,15 @@ class Machine extends Component{
 
                     <h4>{"IP  " + value.ipAddress}</h4>
                     <h4>{"Device Type  " + value.devicetype}</h4>
-                    <h5>{"Ping Speed " + value.speed}</h5>
 
+                    <div style={{
+                        display: "flex",
+                        justifyContent: "space-between"
+                            }}>
+                         <h5>{"Speed " + value.speed}</h5>
+
+                        <img src = "images/dots.png" style = {{width:"12px"}}/>       
+                    </div>
 
                 </div>
             )

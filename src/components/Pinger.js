@@ -1,51 +1,26 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import _ from "lodash";
 import Machine from './Machine'
-const list = [
-        {'ip': '192.168.88.49', 'speed' : '1.5' },
-        {'ip': '192.168.88.49', 'speed' : '1.5' },
-        {'ip': '192.168.88.49', 'speed' : '1.5' },
-        {'ip': '192.168.88.49', 'speed' : '1.5' },
-        {'ip': '192.168.88.49', 'speed' : '1.5' },
-        {'ip': '192.168.88.49', 'speed' : '1.5' },
-        {'ip': '192.168.88.49', 'speed' : '1.5' },
-        {'ip': '192.168.88.49', 'speed' : '1.5' },
-        ];
+
 class Pinger extends Component{
     constructor(props){
         super(props);
         this.state = {
-            ip: null,
-            ms: null,
-            list: null,
+
+            ip_list: null,
         }
     }
     componentWillMount(){
-        // var self = this;
-        // axios.get('http://35.199.33.29:8081/')
-        //     .then(function (response) {
-        //         console.log("ayy", response.data);
-        //
-        //         // self.setState({
-        //         //
-        //         // });
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
+
     }
 
     render(){
-        if (this.state.list !== null){
-            console.log(this.state.list);
-        }
+        console.log("hello",this.props.ip_list);
         return(
             <div style={style.cardsOuter}>
                <div>
-                   <h3>Mahines at Location X</h3>
+                   <h3>Machines at Location X</h3>
                </div>
-                <Machine/>
+                <Machine ip_list={this.props.ip_list}/>
             </div>
 
         )

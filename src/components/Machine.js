@@ -1,22 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import _ from "lodash";
-const list = [
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : "N/A", type: "printer" },
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "printer" },
-    {'ip': '192.168.88.49', 'speed' : "N/A", type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : "N/A", type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-    {'ip': '192.168.88.49', 'speed' : '1.5', type: "computer"},
-
-];
 class Machine extends Component{
     constructor(props){
         super(props);
@@ -26,35 +9,27 @@ class Machine extends Component{
         }
     }
     componentWillMount(){
-        var self = this;
-        axios.get('http://35.199.33.29:8081/')
-            .then(function (response) {
-                console.log("ayy", response.data);
 
-                self.setState({
-
-                });
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
     }
     makeCard() {
         let things = [];
         let icon = null;
-        _.forEach(list, function(value, key){
-            if (value.type === "printer"){
+        _.forEach(this.props.ip_list, function(value, key){
+            if (value.devicetype === "Printer"){
                 icon = "images/printer.png"
             }
-            else if (value.type === 'computer'){
+            else if (value.devicetype === 'Windows Computer'){
                 icon = "images/computer.png"
+            }
+            else if (value.devicetype === "iPhone"){
+                icon = "images/iphone.png"
             }
             things.push(
                 <div key={key} style={style.dataDiv}>
 
                         <img src={icon} alt="" className="deviceIcon"
                              style={
-                                 value.speed === "N/A" ? (
+                                 value.speed === "down" ? (
                                      {
                                          border:"solid 1.5px red"
                                      }
@@ -62,8 +37,10 @@ class Machine extends Component{
                                      {border:"solid 1.5px green"})
                              }/>
 
-                    <h4>{"IP  " + value.ip}</h4>
+                    <h4>{"IP  " + value.ipAddress}</h4>
+                    <h4>{"Device Type  " +  value.devicetype}</h4>
                     <h5>{"Ping Speed " + value.speed}</h5>
+
 
                 </div>
             )
@@ -71,8 +48,8 @@ class Machine extends Component{
         return things;
     }
     render(){
-        if (this.state.list !== null){
-            console.log(this.state.list);
+        if (this.state.ip_list !== null){
+            console.log(this.state.ip_list);
         }
         return(
             <div>
@@ -90,7 +67,7 @@ const style = {
         color: "black",
         border: "solid 1px black",
         backgroundColor: "white",
-        borderRadius: "5px",
+        borderRadius: "10px",
         padding: 20,
         margin: 10,
 

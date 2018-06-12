@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Pinger from './components/Pinger';
+import axios from "axios";
 class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            ip_list: null
+        }
+    }
+    componentWillMount(){
+        var self = this;
+        axios.get('http://104.198.252.163/getall')
+            .then(function (response) {
+                // console.log("ayy", response.data);
+                if (response.data !== null){
+                    self.setState({
+                        ip_list: response.data
+                    });
+                }
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
   render() {
     return (
       <div className="App">
@@ -15,7 +38,7 @@ class App extends Component {
                 <h3>Detail</h3>
             </div>
         </header>
-          <Pinger/>
+          <Pinger ip_list={this.state.ip_list}/>
       </div>
     );
   }

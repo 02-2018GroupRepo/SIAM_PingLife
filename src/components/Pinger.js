@@ -14,7 +14,7 @@ class Pinger extends Component{
     }
 
     render(){
-        console.log("hello",this.props.ip_list);
+        // console.log("hello",this.props.ip_list);
         return(
             <div style={style.cardsOuter}>
                <div>

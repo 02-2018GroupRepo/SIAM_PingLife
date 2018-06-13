@@ -14,7 +14,7 @@ class Pinger extends Component{
     }
 
     render(){
-        // console.log("hello",this.props.ip_list);
+
         return(
             <div style={style.cardsOuter}>
                <div>
@@ -30,7 +30,7 @@ class Pinger extends Component{
 const style = {
     cardsOuter: {
         minHeight: "90vh",
-     backgroundColor: "#96939B"
+     backgroundColor: "#D0CECF"
 
     },
     outer: {

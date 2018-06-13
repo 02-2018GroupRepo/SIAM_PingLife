@@ -8,81 +8,6 @@ class App extends Component {
         super(props);
         this.state = {
             ip_list: null
-            // ip_list: [
-            // //     {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "iPhone",
-            // //         devicename: "unknown",
-            // //         speed: "67 Mbps",
-            // //         firstscanned: "Tue Jun 11 13:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "Windows Computer",
-            // //         devicename: "unknown",
-            // //         speed: "45 Mbps",
-            // //         firstscanned: "Mon Jun 10 13:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "Printer",
-            // //         devicename: "unknown",
-            // //         speed: "down",
-            // //         firstscanned: "Sun Jun 9 13:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "Windows Computer",
-            // //         devicename: "unknown",
-            // //         speed: "112 Mbps",
-            // //         firstscanned: "Tue Jun 12 10:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "Windows Computer",
-            // //         devicename: "unknown",
-            // //         speed: "112 Mbps",
-            // //         firstscanned: "Tue Jun 12 20:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "iPhone",
-            // //         devicename: "unknown",
-            // //         speed: "down",
-            // //         firstscanned: "Tue Jun 12 14:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "iPhone",
-            // //         devicename: "unknown",
-            // //         speed: "49 Mbps",
-            // //         firstscanned: "Tue Jun 12 12:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "Windows Computer",
-            // //         devicename: "unknown",
-            // //         speed: "78 Mbps",
-            // //         firstscanned: "Tue Jun 12 11:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "unknown",
-            // //         devicename: "unknown",
-            // //         speed: "down",
-            // //         firstscanned: "Tue Jun 12 09:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "Windows Computer",
-            // //         devicename: "unknown",
-            // //         speed: "100 Mbps",
-            // //         firstscanned: "Tue Jun 12 08:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "iPhone",
-            // //         devicename: "unknown",
-            // //         speed: "109 Mbps",
-            // //         firstscanned: "Tue Jun 12 17:25:07 EDT 2018"
-            // //     }, {
-            // //         ipaddress: "192.168.88.165",
-            // //         devicetype: "iPhone",
-            // //         devicename: "unknown",
-            // //         speed: "98 Mbps",
-            // //         firstscanned: "Tue Jun 12 18:25:07 EDT 2018"
-            // //     }
-            // // ]
         }
     }
 
@@ -93,7 +18,8 @@ class App extends Component {
                 // console.log("ayy", response.data);
                 if (response.data !== null){
                     self.setState({
-                        ip_list: response.data
+                        ip_list: response.data,
+                        length: response.data.length
                     });
                 }
 
@@ -109,12 +35,14 @@ class App extends Component {
                 <header className="App-header">
                     <div className="flex-header" style={style.flexer}>
                         {/*<h4><a href="" target="none">Link 1</a></h4>*/}
-                        <h3>IP Speeds</h3>
-                        <h3>Graph</h3>
-                        <h3>Location</h3>
-                        <h3>Detail</h3>
+                        <h3 style={{marginRight: "2vw", marginLeft: "2vw"}}>Network Devices</h3>
+                        <h3>History Graph</h3>
+                    </div>
+                    <div className="flex-header" style={{display: "flex"}}>
+                        <h2 style={{color:"white", fontWeight:"500"}}>Syntel Infrastructure Alert Management System</h2>
                     </div>
                 </header>
+                <div style={{marginTop: "2vh"}}>{"Total Machines: " + this.state.length}</div>
                 <Pinger ip_list={this.state.ip_list}/>
             </div>
         );
@@ -125,8 +53,9 @@ const style = {
     flexer: {
         paddingHorizontal: 10,
         display: "flex",
-        justifyContent: "space-around",
-        width: "70vh"
+        justifyContent: "flex-start",
+        width: "55vw"
+
     }
 };
 

@@ -6,13 +6,17 @@ class Card extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ip: null,
-            ms: null,
+            speedLabel: this.props.value.speed,
             show: false
         }
     }
 
     componentWillMount() {
+        if(this.state.speedLabel==="down" ){
+            this.setState({
+                speedLabel:"Not Accessible"
+            })
+        }
 
     }
 
@@ -28,9 +32,7 @@ class Card extends Component {
 
     render() {
         let icon = "";
-        if (this.state.ip_list !== null) {
-
-        }
+        let name = JSON.stringify(this.props.value.deviceName);
         if (this.props.value.devicetype === "Printer") {
             icon = "images/printer.png"
         }
@@ -40,6 +42,9 @@ class Card extends Component {
         else if (this.props.value.devicetype === "iPhone") {
             icon = "images/iphone.png"
         }
+        // else if(this.name.includes("MACBOOK")){
+        //     icon = "images/computer.png"
+        // }
         else {
             icon = "images/notFound.png"
         }
@@ -70,7 +75,7 @@ class Card extends Component {
                         justifyContent: "space-between",
                         alignItems: "center",
                     }}>
-                        <h5>{"Speed " + this.props.value.speed}</h5>
+                        <h5>{this.state.speedLabel}</h5>
 
                         <img onClick={() => {
                             this.state.show !== true ?

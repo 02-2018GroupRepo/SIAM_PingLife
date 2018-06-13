@@ -8,8 +8,11 @@ class Machine extends Component {
         this.state = {
             ip: null,
             ms: null,
-            expandedArray: []
-        }
+            expandedArray: [],
+            running:0,
+            down:0
+        };
+
     }
 
     componentWillMount() {
@@ -17,15 +20,36 @@ class Machine extends Component {
     }
 
 
-
+    down_devices = 0;
+    up_devices = 0;
+    totals() {
+        console.log(this.up_devices, this.down_devices, "hay", this.props.ip_list);
+        if((this.up_devices + this.down_devices) === this.props.ip_list){
+            this.setState({
+                running: this.up_devices,
+                down: this.down_devices
+            })
+        }
+    }
     makeCard() {
         let things = [];
         let icon = null;
         let self = this;
+
+        var total = 0;
         _.forEach(this.props.ip_list, function (value, key) {
             things.push(<Card value={value} key={key} />);
+            total += 1;
+            if(value.speed === "down"){
+              self.down_devices += 1;
+            }
+            else{
+             self.up_devices += 1
+            }
         });
+        this.totals();
         return things;
+
     }
 
     render() {
@@ -34,8 +58,9 @@ class Machine extends Component {
         }
         return (
             <div>
-
+                <p>{"Running: " + this.state.running + " Unresponsive: " + this.state.down}</p>
                 <div style={style.outer}>
+
                     {this.makeCard()}
                 </div>
 

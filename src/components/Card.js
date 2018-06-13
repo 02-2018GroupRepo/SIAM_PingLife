@@ -17,13 +17,9 @@ class Card extends Component {
     }
 
     expanded(value) {
-        console.log(value);
         if(this.state.show){
             return (
-                <div>
-                    <p>hello</p>
-                </div>
-                // {/*<ExpandedMachine value={value}/>*/}
+                 <ExpandedMachine value={value}/>
             )
         }
 
@@ -61,31 +57,35 @@ class Card extends Component {
                                  {border: "solid 1.5px green"})
                          }/>
 
-                    <h5>{"IP  " + this.props.value.ipaddress}</h5>
+                    <h5>{"IP  " + this.props.value.ipAddress}</h5>
                     <div style={{paddingRight: '3vw', paddingLeft: "3vw"}}>
-                        <h4>Device Type <p
-                            style={{fontWeight: '300', fontSize: ".8em"}}>{this.props.value.devicetype}</p></h4>
-                        <h4>First Scanned <p
-                            style={{fontWeight: '300', fontSize: ".8em"}}>{this.props.value.firstscanned}</p></h4>
+                        <h3>Device Type <p
+                            style={{fontWeight: '400', fontSize: ".7em"}}>{this.props.value.devicetype}</p></h3>
+
                     </div>
 
 
                     <div style={{
                         display: "flex",
                         justifyContent: "space-between",
-                        alignItems: "center"
+                        alignItems: "center",
                     }}>
                         <h5>{"Speed " + this.props.value.speed}</h5>
 
                         <img onClick={() => {
+                            this.state.show !== true ?
                             this.setState({
                                 show: true
-                            });
+                            })
+                                :
+                                this.setState({
+                                    show: false
+                                });
                           this.expanded(this.props.value)
                         }} src={"images/dots.png"} style={{maxHeight: "12px"}}/>
                     </div>
                     <div>
-                        {this.expanded()}
+                        {this.expanded(this.props.value)}
                     </div>
 
                 </div>

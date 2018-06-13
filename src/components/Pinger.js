@@ -18,7 +18,8 @@ class Pinger extends Component{
         return(
             <div style={style.cardsOuter}>
                <div>
-                   <h3>Machines at Location X</h3>
+                   <h3>Machines on Subnet at SharedSpace Cobb</h3>
+                   <p>2430 Herodian Way, Smyrna, GA 30080</p>
                </div>
                 <Machine ip_list={this.props.ip_list}/>
             </div>

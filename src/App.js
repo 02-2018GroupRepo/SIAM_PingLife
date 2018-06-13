@@ -7,99 +7,100 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            ip_list: [
-                {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "iPhone",
-                    devicename: "unknown",
-                    speed: "67 Mbps",
-                    firstscanned: "Tue Jun 11 13:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "Windows Computer",
-                    devicename: "unknown",
-                    speed: "45 Mbps",
-                    firstscanned: "Mon Jun 10 13:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "Printer",
-                    devicename: "unknown",
-                    speed: "down",
-                    firstscanned: "Sun Jun 9 13:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "Windows Computer",
-                    devicename: "unknown",
-                    speed: "112 Mbps",
-                    firstscanned: "Tue Jun 12 10:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "Windows Computer",
-                    devicename: "unknown",
-                    speed: "112 Mbps",
-                    firstscanned: "Tue Jun 12 20:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "iPhone",
-                    devicename: "unknown",
-                    speed: "down",
-                    firstscanned: "Tue Jun 12 14:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "iPhone",
-                    devicename: "unknown",
-                    speed: "49 Mbps",
-                    firstscanned: "Tue Jun 12 12:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "Windows Computer",
-                    devicename: "unknown",
-                    speed: "78 Mbps",
-                    firstscanned: "Tue Jun 12 11:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "unknown",
-                    devicename: "unknown",
-                    speed: "down",
-                    firstscanned: "Tue Jun 12 09:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "Windows Computer",
-                    devicename: "unknown",
-                    speed: "100 Mbps",
-                    firstscanned: "Tue Jun 12 08:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "iPhone",
-                    devicename: "unknown",
-                    speed: "109 Mbps",
-                    firstscanned: "Tue Jun 12 17:25:07 EDT 2018"
-                }, {
-                    ipaddress: "192.168.88.165",
-                    devicetype: "iPhone",
-                    devicename: "unknown",
-                    speed: "98 Mbps",
-                    firstscanned: "Tue Jun 12 18:25:07 EDT 2018"
-                }
-            ]
+            ip_list: null
+            // ip_list: [
+            // //     {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "iPhone",
+            // //         devicename: "unknown",
+            // //         speed: "67 Mbps",
+            // //         firstscanned: "Tue Jun 11 13:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "Windows Computer",
+            // //         devicename: "unknown",
+            // //         speed: "45 Mbps",
+            // //         firstscanned: "Mon Jun 10 13:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "Printer",
+            // //         devicename: "unknown",
+            // //         speed: "down",
+            // //         firstscanned: "Sun Jun 9 13:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "Windows Computer",
+            // //         devicename: "unknown",
+            // //         speed: "112 Mbps",
+            // //         firstscanned: "Tue Jun 12 10:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "Windows Computer",
+            // //         devicename: "unknown",
+            // //         speed: "112 Mbps",
+            // //         firstscanned: "Tue Jun 12 20:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "iPhone",
+            // //         devicename: "unknown",
+            // //         speed: "down",
+            // //         firstscanned: "Tue Jun 12 14:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "iPhone",
+            // //         devicename: "unknown",
+            // //         speed: "49 Mbps",
+            // //         firstscanned: "Tue Jun 12 12:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "Windows Computer",
+            // //         devicename: "unknown",
+            // //         speed: "78 Mbps",
+            // //         firstscanned: "Tue Jun 12 11:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "unknown",
+            // //         devicename: "unknown",
+            // //         speed: "down",
+            // //         firstscanned: "Tue Jun 12 09:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "Windows Computer",
+            // //         devicename: "unknown",
+            // //         speed: "100 Mbps",
+            // //         firstscanned: "Tue Jun 12 08:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "iPhone",
+            // //         devicename: "unknown",
+            // //         speed: "109 Mbps",
+            // //         firstscanned: "Tue Jun 12 17:25:07 EDT 2018"
+            // //     }, {
+            // //         ipaddress: "192.168.88.165",
+            // //         devicetype: "iPhone",
+            // //         devicename: "unknown",
+            // //         speed: "98 Mbps",
+            // //         firstscanned: "Tue Jun 12 18:25:07 EDT 2018"
+            // //     }
+            // // ]
         }
     }
 
     componentWillMount() {
-        // var self = this;
-        // axios.get('http://104.198.252.163/getall')
-        //     .then(function (response) {
-        //         // console.log("ayy", response.data);
-        //         if (response.data !== null){
-        //             self.setState({
-        //                 ip_list: response.data
-        //             });
-        //         }
-        //
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     });
+        var self = this;
+        axios.get('http://35.232.7.184/getall')
+            .then(function (response) {
+                // console.log("ayy", response.data);
+                if (response.data !== null){
+                    self.setState({
+                        ip_list: response.data
+                    });
+                }
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
 
     render() {

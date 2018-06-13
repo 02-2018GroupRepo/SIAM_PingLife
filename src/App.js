@@ -13,7 +13,7 @@ class App extends Component {
 
     componentWillMount() {
         var self = this;
-        axios.get('http://35.232.7.184/getall')
+        axios.get('http://localhost:8080/getall')
             .then(function (response) {
                 // console.log("ayy", response.data);
                 if (response.data !== null){

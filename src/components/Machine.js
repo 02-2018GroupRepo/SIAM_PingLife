@@ -20,17 +20,21 @@ class Machine extends Component {
     }
 
 
-    down_devices = 0;
-    up_devices = 0;
+
     totals() {
-        console.log(this.up_devices, this.down_devices, "hay", this.props.ip_list);
-        if((this.up_devices + this.down_devices) === this.props.ip_list){
-            this.setState({
-                running: this.up_devices,
-                down: this.down_devices
-            })
+        // console.log(this.props.ip_list);
+        if(this.props.ip_list) {
+            console.log(this.up_devices, this.down_devices, "hay", this.props.ip_list);
+            if ((this.up_devices + this.down_devices) === this.props.ip_list.length) {
+                this.setState({
+                    running: this.up_devices,
+                    down: this.down_devices
+                })
+            }
         }
     }
+    down_devices = 0;
+    up_devices = 0;
     makeCard() {
         let things = [];
         let icon = null;

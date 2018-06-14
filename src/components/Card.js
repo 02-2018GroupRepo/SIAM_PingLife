@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import _ from "lodash";
 import ExpandedMachine from "./ExpandedMachine";
+import axios from 'axios'
 
 class Card extends Component {
     constructor(props) {
@@ -8,22 +9,39 @@ class Card extends Component {
         this.state = {
             speedLabel: this.props.value.speed,
             show: false
+
         }
+
+        setInterval(() => {
+            axios.get(`http://35.232.7.184:8080/getonespeed/${this.props.value.ipAddress}`)
+                .then((response) => {
+                        // this.props.speedLabel = response.data
+/*                        this.this.props.value.speed = "hooey"
+                        console.log('props changed')
+                        forceUpdate()*/
+this.setState({
+    speedLabel: response.data
+
+})
+                    }
+                )
+        }, 1000 * 60)
+
     }
 
-    componentWillMount() {
-        if(this.state.speedLabel==="down" ){
+    componentDidUpdate() {
+        if (this.state.speedLabel === "down") {
             this.setState({
-                speedLabel:"Not Accessible"
+                speedLabel: "Not Accessible"
             })
         }
 
     }
 
     expanded(value) {
-        if(this.state.show){
+        if (this.state.show) {
             return (
-                 <ExpandedMachine value={value}/>
+                <ExpandedMachine value={value}/>
             )
         }
 
@@ -50,7 +68,7 @@ class Card extends Component {
         }
         return (
             <div>
-                <div  style={style.dataDiv}>
+                <div style={style.dataDiv}>
 
                     <img src={icon} alt="" className="deviceIcon"
                          style={
@@ -79,14 +97,14 @@ class Card extends Component {
 
                         <img onClick={() => {
                             this.state.show !== true ?
-                            this.setState({
-                                show: true
-                            })
+                                this.setState({
+                                    show: true
+                                })
                                 :
                                 this.setState({
                                     show: false
                                 });
-                          this.expanded(this.props.value)
+                            this.expanded(this.props.value)
                         }} src={"images/dots.png"} style={{maxHeight: "12px"}}/>
                     </div>
                     <div>

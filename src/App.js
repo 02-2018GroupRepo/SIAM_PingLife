@@ -11,9 +11,13 @@ class App extends Component {
         }
     }
 
+    /*(https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en-US)*/
+
     componentWillMount() {
         var self = this;
-        axios.get('http://35.232.7.184/getall')
+         axios.get('http://35.232.7.184:8080/getall')
+        //axios.get('localhost:8080/getall')
+
             .then(function (response) {
                 // console.log("ayy", response.data);
                 if (response.data !== null){

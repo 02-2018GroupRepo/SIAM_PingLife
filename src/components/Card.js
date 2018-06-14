@@ -35,9 +35,9 @@ this.setState({
     }
 
     componentDidUpdate() {
-        if (this.state.speedLabel === "down") {
+        if (this.state.speedLabel === "down" || this.state.speedLabel === "unknown") {
             this.setState({
-                speedLabel: "Not Accessible"
+                speedLabel: "Unresponsive"
             })
         }
 

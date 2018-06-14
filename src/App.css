@@ -12,13 +12,26 @@
   background-color: rgb(150,196,236);
   display: flex;
     flex-direction: row;
+    align-items: center;
 }
-.flex-header h3 {
+.flex-header-left{
+    paddingHorizontal: 10;
+    display: flex;
+    width: 100vw
+}
+.flex-header-left h5 {
     color: white;
     font-family: "Lucida Grande";
     font-weight: 100;
     margin: 2vw 0;
     text-decoration: underline;
+
+}
+.flex-header-right {
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 80vw;
+    padding-right: 2vw;
 }
 
 .deviceIcon {

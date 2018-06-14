@@ -10,7 +10,9 @@ class Machine extends Component {
             ms: null,
             expandedArray: [],
             running:0,
-            down:0
+            down:0,
+            list_length: 0
+
         };
 
     }
@@ -24,11 +26,12 @@ class Machine extends Component {
     totals() {
         // console.log(this.props.ip_list);
         if(this.props.ip_list) {
-            console.log(this.up_devices, this.down_devices, "hay", this.props.ip_list);
+            // console.log(this.up_devices, this.down_devices, "hay", this.props.ip_list);
             if ((this.up_devices + this.down_devices) === this.props.ip_list.length) {
                 this.setState({
                     running: this.up_devices,
-                    down: this.down_devices
+                    down: this.down_devices,
+                    list_length: this.props.list_length
                 })
             }
         }
@@ -62,7 +65,15 @@ class Machine extends Component {
         }
         return (
             <div>
-                <p>{"Running: " + this.state.running + " Unresponsive: " + this.state.down}</p>
+
+                <div style={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
+                    <p style={{fontWeight: "600", paddingRight: ".5vw", color: "green"}}>Running:</p>
+                    <p style={{color: "green"}}>{this.state.running}</p>
+                    <p style={{fontWeight: "600", paddingLeft: ".5vw", paddingRight: ".5vw", color: "red"}}>Unresponsive:</p>
+                    <p style={{color: "red"}}>{this.state.down}</p>
+                    <p style={{fontWeight: "600", paddingLeft: ".5vw", paddingRight: ".5vw"}}>Total Machines:</p>
+                    <p>{this.state.list_length}</p>
+                </div>
                 <div style={style.outer}>
 
                     {this.makeCard()}
@@ -89,8 +100,6 @@ const style = {
         justifyContent: "center",
         flexWrap: 'wrap',
         marginTop: 15,
-
-
     },
     iconStyle: {
         border: "solid 3px green"

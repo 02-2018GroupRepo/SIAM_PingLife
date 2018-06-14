@@ -33,30 +33,22 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <div className="flex-header" style={style.flexer}>
+                    <div className="flex-header-left">
                         {/*<h4><a href="" target="none">Link 1</a></h4>*/}
-                        <h3 style={{marginRight: "2vw", marginLeft: "2vw"}}>Network Devices</h3>
-                        <h3>History Graph</h3>
+                        <h5 style={{marginRight: "2vw", marginLeft: "2vw"}}>Network Devices</h5>
+                        <h5>History Graph</h5>
                     </div>
-                    <div className="flex-header" style={{display: "flex"}}>
-                        <h2 style={{color:"white", fontWeight:"500"}}>Syntel Infrastructure Alert Management System</h2>
+                    <div className="flex-header-right" style={{display: "flex"}}>
+                        <h4 style={{color:"white", fontWeight:"500"}}>Syntel Infrastructure Alert Management System</h4>
                     </div>
                 </header>
-                <div style={{marginTop: "2vh"}}>{"Total Machines: " + this.state.length}</div>
-                <Pinger ip_list={this.state.ip_list}/>
+
+                <Pinger ip_list={this.state.ip_list} list_length={this.state.length}/>
             </div>
         );
     }
 }
 
-const style = {
-    flexer: {
-        paddingHorizontal: 10,
-        display: "flex",
-        justifyContent: "flex-start",
-        width: "55vw"
 
-    }
-};
 
 export default App;

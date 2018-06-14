@@ -14,7 +14,7 @@ class MachineDetail extends Component{
     }
 
     render(){
-        // console.log("hello",this.props.ip_list);
+
         return(
             <div>
                <div>

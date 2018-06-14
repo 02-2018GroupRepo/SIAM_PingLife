@@ -20,7 +20,7 @@ class ExpandedMachine extends Component {
         if (this.props.value) {
             return (
                 <div>
-                    <div style={{border: "1px solid black",color: "black", borderRadius: "5px", backgroundColor: "gray"}}>
+                    <div style={{borderBottom: "2px solid black",color: "black", backgroundColor: "white"}}>
                         <h5 style={{margin: "1vh", fontWeight: "400"}}>More Info</h5>
                     </div>
                     <h5>First Scanned

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
-import {LineChart, XAxis, YAxis, CartesianGrid, Line} from 'recharts'
+import {LineChart, XAxis, YAxis, CartesianGrid, Line, Label} from 'recharts'
 
 class MyGraph extends Component {
     constructor(props) {
@@ -20,21 +20,23 @@ class MyGraph extends Component {
                 console.log(response.data);
 
 
-
-
                 if (response.data !== null) {
                     let readableData = []
 
                     for (let mykey in response.data) {
 
-                        if( response.data[mykey].speed =='down'){
-                            readableData.push({name: response.data[mykey].date.split(" ")[1],
-                                value: 0})
+                        if (response.data[mykey].speed == 'down') {
+                            readableData.push({
+                                name: response.data[mykey].date.split(" ")[1],
+                                value: 0
+                            })
                             continue;
                         }
 
-                        readableData.push({name: response.data[mykey].date.split(" ")[1],
-                            value: parseInt(response.data[mykey].speed.split(" ")[0])})
+                        readableData.push({
+                            name: response.data[mykey].date.split(" ")[1],
+                            value: parseInt(response.data[mykey].speed.split(" ")[0])
+                        })
 
                     }
                     self.setState({
@@ -59,14 +61,14 @@ class MyGraph extends Component {
 
         return (
             <div style={divStyle}>
-            <LineChart width={1000} height={300} data={this.state.data}>
-                <XAxis dataKey="name"/>
-                <YAxis dataKey='value'/>
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-                <Line type="monotone" dataKey="value" stroke="#8884d8"/>
-                <Line type="monotone" dataKey="pv" stroke="#82ca9d"/>
-            </LineChart>
-    </div>
+                <LineChart width={1000} height={300} data={this.state.data}>
+                    <XAxis dataKey="name"><br/><Label value="Time" offset={0} position="insideBottom"/> </XAxis>
+                    <YAxis dataKey='value'><Label value="Mbps" offset={0} position="insideLeft" angle={-90}/> </YAxis>
+                    <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
+                    <Line type="monotone" dataKey="value" stroke="#8884d8"/>
+                    <Line type="monotone" dataKey="pv" stroke="#82ca9d"/>
+                </LineChart>
+            </div>
         )
 
 

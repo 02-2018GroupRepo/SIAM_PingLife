@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import _ from "lodash";
 import ExpandedMachine from "./ExpandedMachine";
 import axios from 'axios'
+import {
+    BrowserRouter as Router,
+        Route,
+        Link
+} from 'react-router-dom'
 
 class Card extends Component {
     constructor(props) {
@@ -70,7 +75,7 @@ this.setState({
             <div>
                 <div style={style.dataDiv}>
 
-                    <img src={icon} alt="" className="deviceIcon"
+                    <Link to={`/graph/${this.props.value.ipAddress}`} target='_blank' ipAddress={this.props.value.ipAddress}><img src={icon} alt="" className="deviceIcon"
                          style={
                              this.props.value.speed === "down" ? (
                                  {
@@ -78,7 +83,7 @@ this.setState({
                                  }
                              ) : (
                                  {border: "solid 1.5px green"})
-                         }/>
+                         }/></Link>
 
                     <h5>{"IP  " + this.props.value.ipAddress}</h5>
                     <div style={{paddingRight: '3vw', paddingLeft: "3vw"}}>

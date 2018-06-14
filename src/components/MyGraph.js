@@ -26,6 +26,13 @@ class MyGraph extends Component {
                     let readableData = []
 
                     for (let mykey in response.data) {
+
+                        if( response.data[mykey].speed =='down'){
+                            readableData.push({name: response.data[mykey].date.split(" ")[1],
+                                value: 0})
+                            continue;
+                        }
+
                         readableData.push({name: response.data[mykey].date.split(" ")[1],
                             value: parseInt(response.data[mykey].speed.split(" ")[0])})
 
@@ -44,7 +51,14 @@ class MyGraph extends Component {
 
     render() {
 
+        const divStyle = {
+            margin: 'auto',
+            paddingTop: '100px',
+            paddingLeft: '75px'
+        };
+
         return (
+            <div style={divStyle}>
             <LineChart width={1000} height={300} data={this.state.data}>
                 <XAxis dataKey="name"/>
                 <YAxis dataKey='value'/>
@@ -52,6 +66,7 @@ class MyGraph extends Component {
                 <Line type="monotone" dataKey="value" stroke="#8884d8"/>
                 <Line type="monotone" dataKey="pv" stroke="#82ca9d"/>
             </LineChart>
+    </div>
         )
 
 
